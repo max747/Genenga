@@ -1,0 +1,59 @@
+﻿\documentclass[12pt]{jarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{verbatim}
+\usepackage{plext}
+\usepackage{otf}
+\pagestyle{empty}
+\setlength{\textwidth}{100truemm}
+\setlength{\hoffset}{0in}
+\setlength{\voffset}{0truemm}
+\setlength{\headheight}{0truemm}
+\setlength{\headsep}{0truemm}
+\setlength{\oddsidemargin}{0truemm}
+\setlength{\textheight}{148truemm}
+\setlength{\topmargin}{0truemm}
+\advance\oddsidemargin -1in
+\advance\topmargin -1in
+\setlength{\footskip}{0truemm}
+\begin{document}
+\setlength{\unitlength}{1truemm}
+
+{{#address}}
+
+\begin{picture}(100,148)(0,0)
+    \put(40.9,129.3){\fontsize{18pt}{0pt}{\mcfamily { {{no1}} } } }
+    \put(48.0,129.3){\fontsize{18pt}{0pt}{\mcfamily { {{no2}} } } }
+    \put(55.1,129.3){\fontsize{18pt}{0pt}{\mcfamily { {{no3}} } } }
+    \put(62.3,129.3){\fontsize{18pt}{0pt}{\mcfamily { {{no4}} } } }
+    \put(69.2,129.3){\fontsize{18pt}{0pt}{\mcfamily { {{no5}} } } }
+    \put(76.1,129.3){\fontsize{18pt}{0pt}{\mcfamily { {{no6}} } } }
+    \put(83.0,129.3){\fontsize{18pt}{0pt}{\mcfamily { {{no7}} } } }
+    {{#address3}}
+    \put(80,24){\vbox{\hsize=9.9cm\tate\fontsize{15pt}{0pt}{\mcfamily { {{address}} } } } }
+    \put(70,18){\vbox{\hsize=9.9cm\tate\fontsize{15pt}{0pt}{\mcfamily { {{address2}} } } } }
+    \put(60,18){\vbox{\hsize=9.9cm\tate\fontsize{15pt}{0pt}{\mcfamily { {{address3}} } } } }
+    {{/address3}}
+    {{^address3}}
+    {{#address2}}
+    \put(80,24){\vbox{\hsize=9.9cm\tate\fontsize{15pt}{0pt}{\mcfamily { {{address}} } } } }
+    \put(70,18){\vbox{\hsize=9.9cm\tate\fontsize{15pt}{0pt}{\mcfamily { {{address2}} } } } }
+    {{/address2}}
+    {{^address2}}
+    \put(80,24){\vbox{\hsize=9.9cm\tate\fontsize{15pt}{0pt}{\mcfamily { {{address}} } } } }
+    {{/address2}}
+    {{/address3}}
+    {{#first_name2}}
+    \put(46,20){\vbox{\tate\fontsize{28pt}{0pt}{\mcfamily {{last_name}}} } }
+    \put(46,-12){\vbox{\tate\fontsize{28pt}{0pt}{\mcfamily {{first_name1}} 様} } }
+    \put(33,-12){\vbox{\tate\fontsize{28pt}{0pt}{\mcfamily {{first_name2}} 様} } }
+    {{/first_name2}}
+    {{^first_name2}}
+    \put(46,20){\vbox{\tate\fontsize{28pt}{0pt}{\mcfamily {{last_name}}} } }
+    \put(46,-12){\vbox{\tate\fontsize{28pt}{0pt}{\mcfamily {{first_name1}} 様} } }
+    {{/first_name2}}
+\end{picture}
+
+{{/address}}
+
+\end{document}
+
