@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ -z $1 ]; then
+    echo "Error: no target name"
+    exit 1
+fi
+
+CURDIR=$(dirname $0)
+
+cd $CURDIR/dest
+utf8toutf $1.tex > $1_conv.tex
+platex -kanji=euc $1_conv.tex
+dvipdfmx -o $1.pdf $1_conv.dvi
