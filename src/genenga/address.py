@@ -17,6 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+import csv
 
 class Address(object):
 
@@ -26,53 +27,42 @@ class Address(object):
     def address(self):
         address = []
         with open(self.address_file) as f:
-            # 0: 1 is enable, other than 1 is disable.
-            # 1: last_name destination last(family) name (required)
-            # 2: first_name1 destination first name (required)
-            # 3: first_name2 destination partner first name (optional)
-            # 4: address
-            # 5: address2 detail address
-            # 6: no1 of postal code in Japan
-            # 7: no2 of postal code in Japan
-            # 8: no3 of postal code in Japan
-            # 9: no4 of postal code in Japan
-            # 10: no5 of postal code in Japan
-            # 11: no6 of postal code in Japan
-            # 12: no7 of postal code in Japan
+            csv_reader = csv.reader(f)
 
-            lines = [line.split(',')
-                     for line in f
-                     if line.split(',')[0] == '1']
-            for l in lines:
-                if len(l) == 14:
+            for l in csv_reader:
+                # check a printing flag
+                if l[0] == '0':
+                    continue
+
+                if len(l) == 8:
                     address.append(
-                        {"last_name": l[1],
+                        {"last_name":   l[1],
                          "first_name1": l[2],
                          "first_name2": l[3],
-                         "address": l[4],
-                         "address2": l[5],
-                         "no1": l[6],
-                         "no2": l[7],
-                         "no3": l[8],
-                         "no4": l[9],
-                         "no5": l[10],
-                         "no6": l[11],
-                         "no7": l[12],
-                         "address3": l[13],
+                         "address":     l[4],
+                         "address2":    l[5],
+                         "address3":    l[6],
+                         "no1":         l[7][0],
+                         "no2":         l[7][1],
+                         "no3":         l[7][2],
+                         "no4":         l[7][3],
+                         "no5":         l[7][4],
+                         "no6":         l[7][5],
+                         "no7":         l[7][6],
                          })
                 else:
                     address.append(
-                        {"last_name": l[1],
+                        {"last_name":   l[1],
                          "first_name1": l[2],
                          "first_name2": l[3],
-                         "address": l[4],
-                         "address2": l[5],
-                         "no1": l[6],
-                         "no2": l[7],
-                         "no3": l[8],
-                         "no4": l[9],
-                         "no5": l[10],
-                         "no6": l[11],
-                         "no7": l[12]
+                         "address":     l[4],
+                         "address2":    l[5],
+                         "no1":         l[6][0],
+                         "no2":         l[6][1],
+                         "no3":         l[6][2],
+                         "no4":         l[6][3],
+                         "no5":         l[6][4],
+                         "no6":         l[6][5],
+                         "no7":         l[6][6],
                          })
         return address
